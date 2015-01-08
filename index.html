@@ -1,4 +1,54 @@
 <html>
+	<header>
+		<script language="javascript">
+		//-- Ticker Tape in Java Script .. Heavily Modified by Bill Welliver
+		//-- Original concept by Cameron Gregory cameron@corona.att.com
+		var tickertapeform
+		tt_speed=0
+		tt_len=0
+		tt_space="                                                                                                    "
+		tt_tid = 0;
+		tt_message="."
+		tt_c= -tt_len;
+
+		function move() {
+			cend=Math.min(tt_c+tt_len,tt_message.length)
+			if (tt_c <0)
+				cstart=0;
+			else
+				cstart=tt_c;
+			if (tt_c < 0)
+				tt_f.scroll.value=tt_space.substring(0,-tt_c) + tt_message.substring(cstart,cend)
+			else
+				tt_f.scroll.value=tt_message.substring(cstart,cend)
+				tt_c = tt_c +1;
+			if (tt_c == tt_message.length ) tt_c = -tt_len;
+			tt_tid=window.setTimeout("move()",tt_speed);
+		}
+
+		function tt_start(x) {
+			tt_f=x
+			tt_tid=window.setTimeout("move()",tt_speed);
+		}
+
+		function tt_cleartid() {
+			window.clearTimeout(tt_tid);
+		}
+
+		// for some reason on some pages this crashes netscape
+		function ticker(m,l,s) {
+			tt_message=m
+			tt_len=l
+			tt_speed=s
+			tt_c= -tt_len;
+			document.write('<FORM name=tickertapeform><input name=scroll size=')
+			document.write(tt_len)
+			document.write(' value="" readonly></FORM>')
+			tt_start(document.tickertapeform);
+		}
+
+		</script>
+	</header>
 	<body>
 		<div>
 			<h2>
@@ -26,4 +76,9 @@
 			</p>
 		</div>
 	</body>
+	<footer>
+		<script language="javascript">
+		ticker ("I'm waking up, I feel it in my bones. Enough to make my systems blow. Welcome to the new rage, to the new rage. Welcome to the new rage, to the new rage. Whoa, oh, oh, oh, oh, whoa, oh, oh, oh, I'm TEJINDERactive, TEJINDERactive. Whoa, oh, oh, oh, oh, whoa, oh, oh, oh, I'm TEJINDERactive, TEJINDERactive.", 60, 90);
+		</script>
+	</footer>
 </html>
