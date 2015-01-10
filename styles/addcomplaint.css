@@ -1,0 +1,20 @@
+label {
+    float: left;
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 15px;
+}
+input, textarea, select {
+    margin-bottom: 5px;
+    padding: 2px 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+}
+input[type=submit] {
+    margin-top: 5px;
+    margin-left: 165px;
+}

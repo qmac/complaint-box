@@ -3,15 +3,16 @@ $complaints = file_get_contents("complaints.txt");
 $complaint_arr = array_filter(explode("\n", $complaints));
 ?>
 
-<h3>
-	Tej's Complaints
-</h3>
+<header>
+	<link rel="stylesheet" type="text/css" href="styles/viewcomplaints.css"/>
+</header>
 
-<table>
+<table cellspacing="0">
+	<caption>Tej's Complaints</caption>
 	<tr>
-		<td>Complaint Text</td>
-		<td>Category</td>
-		<td>Tej Rage Intensity</td>
+		<th>Complaint Text</th>
+		<th>Category</th>
+		<th>Tej Rage Intensity</th>
 	</tr>
 	<?php
 	foreach($complaint_arr as $complaint) 

@@ -1,8 +1,10 @@
+<header>
+	<link rel="stylesheet" type="text/css" href="styles/addcomplaint.css"/>
+</header>
+
 <form action="complain.php" method="POST">
 	<div>
 		<label>Complaint:</label>
-	</div>
-	<div>
 		<textarea name="complaint" rows="5" cols="40"></textarea>
 	</div>
 	<div>
