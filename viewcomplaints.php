@@ -1,12 +1,13 @@
 <?php
 $complaints = file_get_contents("complaints.txt");
-$complaint_arr = array_filter(explode("\n", $complaints));
+$complaint_arr = array_reverse(array_filter(explode("\n", $complaints)));
 ?>
 
 <header>
 	<link rel="stylesheet" type="text/css" href="css/viewcomplaints.css"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script src="http://listjs.com/no-cdn/list.js"></script>
+	<script src="http://listjs.com/no-cdn/list.pagination.js"></script>
 </header>
 
 <div id="complaints-table">
@@ -16,7 +17,6 @@ $complaint_arr = array_filter(explode("\n", $complaints));
 				<th class="sort" data-sort="complaint">Complaint Text</th>
 				<th class="sort" data-sort="category">Category</th>
 				<th class="sort" data-sort="intensity">Tej Rage Intensity</th>
-				<input class="search" placeholder="Filter"/>
 			</tr>
 		</thead>
 		<tbody class="list">
@@ -32,10 +32,16 @@ $complaint_arr = array_filter(explode("\n", $complaints));
 			}
 			?>
 		</tbody>
+		<caption id="navbar" align="bottom">
+			<ul class="pagination"></ul>
+			<input class="search" placeholder="Filter"/>
+		</caption>
 	</table>
 	<script type="text/javascript">
 		var options = {
-			valueNames: ['complaint', 'category', 'intensity']
+			valueNames: ['complaint', 'category', 'intensity'],
+			page: 8,
+			plugins: [ListPagination({})]
 		};
 
 		var list = new List('complaints-table', options);
