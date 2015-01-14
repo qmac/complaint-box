@@ -4,11 +4,10 @@ $complaint_arr = array_filter(explode("\n", $complaints));
 ?>
 
 <header>
-	<link rel="stylesheet" type="text/css" href="styles/viewcomplaints.css"/>
+	<link rel="stylesheet" type="text/css" href="css/viewcomplaints.css"/>
 </header>
 
 <table cellspacing="0">
-	<caption>Tej's Complaints</caption>
 	<tr>
 		<th>Complaint Text</th>
 		<th>Category</th>
