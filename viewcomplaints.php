@@ -5,27 +5,42 @@ $complaint_arr = array_filter(explode("\n", $complaints));
 
 <header>
 	<link rel="stylesheet" type="text/css" href="css/viewcomplaints.css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="http://listjs.com/no-cdn/list.js"></script>
 </header>
 
-<table cellspacing="0">
-	<tr>
-		<th>Complaint Text</th>
-		<th>Category</th>
-		<th>Tej Rage Intensity</th>
-	</tr>
-	<?php
-	foreach($complaint_arr as $complaint) 
-	{
-		echo "<tr>";
-		$complaint_data = explode("\t", $complaint);
-		foreach($complaint_data as $data) 
-		{
-			echo "<td>" . $data . "</td>";
-		}
-		echo "</tr>";
-	}
-	?>
-</table>
+<div id="complaints-table">
+	<table cellspacing="0">
+		<thead>
+			<tr title="Click to toggle sort">
+				<th class="sort" data-sort="complaint">Complaint Text</th>
+				<th class="sort" data-sort="category">Category</th>
+				<th class="sort" data-sort="intensity">Tej Rage Intensity</th>
+				<input class="search" placeholder="Filter"/>
+			</tr>
+		</thead>
+		<tbody class="list">
+			<?php
+			foreach($complaint_arr as $complaint) 
+			{
+				echo "<tr>";
+				$complaint_data = explode("\t", $complaint);
+				echo "<td class='complaint'>" . $complaint_data[0] . "</td>";
+				echo "<td class='category'>" . $complaint_data[1] . "</td>";
+				echo "<td class='intensity'>" . $complaint_data[2] . "</td>";
+				echo "</tr>";
+			}
+			?>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		var options = {
+			valueNames: ['complaint', 'category', 'intensity']
+		};
+
+		var list = new List('complaints-table', options);
+	</script>
+</div>
 
 <p>
 	<a href="./">
